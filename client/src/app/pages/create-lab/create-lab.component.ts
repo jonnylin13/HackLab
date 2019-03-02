@@ -18,6 +18,10 @@ export class CreateLabComponent implements OnInit {
     this.evaluator = new Evaluator();
   }
 
+  getEvaluator() {
+    return this.evaluator;
+  }
+
   ngOnInit() {
     this.restart();
   }

@@ -3,7 +3,7 @@
   <app-editor [(code)]="this.code"> </app-editor>
   <button class="btn btn-danger" (click)="this.restart()">Restart</button>
   <button class="btn btn-info" (click)="this.createLab()">Post Lab</button>
-  <button class="btn" (click)="this.evaluator.evaluate(this.code)">
+  <button class="btn" (click)="this.getEvaluator().evaluate(this.code)">
     Run Local
   </button>
   <button class="btn btn-dark" (click)="this.toggleFullscreen()">
