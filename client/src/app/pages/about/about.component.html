@@ -1,0 +1,22 @@
+<app-layout class="half-container" centered="true">
+  <app-logo></app-logo>
+  <small>
+    HackLab was built for Santa Clara University's annual Hack for Humanity
+    2019, intended to target the theme of education for underprivileged
+    communities.
+  </small>
+  <br />
+  <br />
+  <small>
+    Our application provides an easily accessible code editor that can be used
+    for coding labs, assignments, or even just getting started on your first
+    program!
+  </small>
+
+  <ul></ul>
+  <button class="btn" (click)="this.nav.home()">Go Home</button>
+  <button class="btn btn-info" (click)="this.nav.createLab()">
+    Create a Lab
+  </button>
+  <button class="btn">Join a Lab</button>
+</app-layout>

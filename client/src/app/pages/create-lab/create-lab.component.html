@@ -1,0 +1,28 @@
+<app-navbar> </app-navbar>
+<app-layout class="full-container" centered="false">
+  <app-editor [(code)]="this.code"> </app-editor>
+  <button class="btn btn-danger" (click)="this.restart()">Restart</button>
+  <button class="btn btn-info" (click)="this.createLab()">Post Lab</button>
+  <button class="btn" (click)="this.evaluator.evaluate(this.code)">
+    Run Local
+  </button>
+  <button class="btn btn-dark" (click)="this.toggleFullscreen()">
+    Fullscreen
+  </button>
+</app-layout>
+<app-modal [visible]="this.createLabModal">
+  <div style="background-color: lightgray;">
+    <input
+      [(ngModel)]="this.nickname"
+      type="text"
+      class="text-field"
+      placeholder="Enter a nickname"
+    />
+    <button class="btn" (click)="this.cancelCreateLab()">
+      Cancel
+    </button>
+    <button class="btn btn-info" (click)="this.confirmCreateLab()">
+      Confirm
+    </button>
+  </div>
+</app-modal>

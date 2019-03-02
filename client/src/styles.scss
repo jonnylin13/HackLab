@@ -1,0 +1,96 @@
+/* You can add global styles to this file, and also import other style files */
+
+.vertical-padding {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.centered-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.background {
+  background: black;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: 0 !important;
+  z-index: -1;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.centered-container {
+  background: lightgray;
+  color: black;
+  max-height: 600px;
+  min-width: 300px;
+  overflow: auto;
+  text-align: center;
+}
+
+.half-container {
+  width: 50%;
+  max-width: 60%;
+  margin: 0 auto;
+}
+
+.full-container {
+  width: 100%;
+  height: 100%;
+}
+
+.btn {
+  text-align: center;
+  padding: 1em 1.2em;
+  margin: 2em 1em;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: lightskyblue;
+  color: lightslategray;
+}
+
+.btn:active {
+  color: white;
+}
+
+.btn-info {
+  background-color: darken(lightskyblue, 15);
+  color: white;
+}
+
+.btn-danger {
+  background-color: salmon;
+  color: white;
+}
+
+.btn-dark {
+  background-color: gray;
+  color: white;
+}
+
+.text-field {
+  border: none;
+  font-size: 16px;
+  padding: 1em;
+  margin-right: 1em;
+  margin-left: 1em;
+}
+
+body {
+  font-family: 'B612', sans-serif;
+  margin: 0;
+  overscroll-behavior: none;
+}
+
+app-about {
+  width: 700px; // ???
+}
