@@ -17,7 +17,7 @@ export class ClientService {
   lab: any;
 
   constructor(private http: HttpClient) {
-    this.url = localUrl;
+    this.url = externalUrl;
   }
 
   ping() {
