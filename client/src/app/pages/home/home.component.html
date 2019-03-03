@@ -1,24 +1,26 @@
 <app-layout class="half-container" centered="true">
   <app-logo></app-logo>
-  <small
-    >Create test cases and project them to your students in realtime to be
-    solved with metric feedback.</small
-  >
-  <br />
-  <br />
-  <br />
-  <small>
-    Students: Click "Join a Lab", enter in your lab's code, and solve the
-    solution() function.
-  </small>
-  <br />
-  <br />
-  <br />
-  <small>
-    The app is formatted for you to have your developer tools console open in
-    the browser simultaneously.
-  </small>
-  <ul></ul>
+  <app-container>
+    <small
+      >Create test cases and project them to your students in realtime to be
+      solved with metric feedback.</small
+    >
+    <br />
+    <br />
+    <br />
+    <small>
+      Students: Click "Join a Lab", enter in your lab's code, and solve the
+      solution() function.
+    </small>
+    <br />
+    <br />
+    <br />
+    <small>
+      The app is formatted for you to have your developer tools console open in
+      the browser simultaneously.
+    </small>
+    <ul></ul>
+  </app-container>
   <button class="btn" (click)="this.getNav().about()">About Us</button>
   <button class="btn btn-info" (click)="this.getNav().createLab()">
     Create a Lab

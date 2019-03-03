@@ -18,6 +18,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { JoinLabComponent } from './pages/join-lab/join-lab.component';
 import { StudentComponent } from './pages/student/student.component';
+import { ContainerComponent } from './components/container/container.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { StudentComponent } from './pages/student/student.component';
     ModalComponent,
     AdminComponent,
     JoinLabComponent,
-    StudentComponent
+    StudentComponent,
+    ContainerComponent
   ],
   imports: [
     BrowserModule,

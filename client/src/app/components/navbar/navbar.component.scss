@@ -1,6 +1,6 @@
 ul {
   position: relative;
-  color: white;
+  color: black;
   list-style-type: none;
   padding: 0;
   margin: 0.5em 0;
@@ -18,7 +18,7 @@ li {
 }
 
 li:hover {
-  color: lightblue;
+  color: grey;
 }
 
 li:active {
