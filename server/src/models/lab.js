@@ -1,8 +1,8 @@
-const shortid = require('shortid');
+const hri = require('human-readable-ids').hri;
 
 class Lab {
   constructor(instructor, code, description, parsedCode) {
-    this.id = shortid.generate();
+    this.id = hri.random();
     this.code = code;
     this.parsedCode = parsedCode;
     this.description = description;
