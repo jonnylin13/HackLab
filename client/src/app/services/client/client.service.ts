@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { Lab } from '../../models/response';
 
 const localUrl: string = 'http://localhost:8080/api/';
-const externalUrl: string = 'https://hacklab.herokuapp.com/api/';
+const externalUrl: string = 'https://hacklab.herokuapp.com:8080/api/';
 
 @Injectable({
   providedIn: 'root'
