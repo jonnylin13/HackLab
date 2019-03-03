@@ -7,7 +7,7 @@ const cors = require('cors');
 const app = express();
 
 const RouteController = require('./src/routes');
-const port = process.env.REST_PORT || 8080;
+const port = process.env.PORT || 8080;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));

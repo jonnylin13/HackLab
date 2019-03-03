@@ -12,8 +12,9 @@ class SocketServer {
     this.labService = labService;
     this.httpServer = http.createServer();
     this.io = io(this.httpServer, SERVER_OPTIONS);
-    this.httpServer.listen(3000);
-    console.log('Server listening on port 3000.');
+    let port = process.env.PORT || 3000;
+    this.httpServer.listen(port);
+    console.log('Socket server listening on ' + port);
     this.io.on('connection', socket => this._onConnection(socket));
     this.sockets = {};
   }
