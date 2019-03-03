@@ -1,4 +1,3 @@
-const http = require('http');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const io = require('socket.io');
@@ -8,13 +7,9 @@ const SERVER_OPTIONS = {
 };
 
 class SocketServer {
-  constructor(labService) {
+  constructor(labService, server) {
     this.labService = labService;
-    this.httpServer = http.createServer();
-    this.io = io(this.httpServer, SERVER_OPTIONS);
-    let port = process.env.PORT || 3000;
-    this.httpServer.listen(port);
-    console.log('Socket server listening on ' + port);
+    this.io = io(server, SERVER_OPTIONS);
     this.io.on('connection', socket => this._onConnection(socket));
     this.sockets = {};
   }

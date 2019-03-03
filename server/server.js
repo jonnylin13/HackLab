@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 const cors = require('cors');
 const app = express();
+const server = require('http').createServer(app);
 
 const RouteController = require('./src/routes');
 const port = process.env.PORT || 8080;
@@ -23,8 +24,8 @@ app.use(function(req, res, next) {
   );
   next();
 });
-app.use('/api', new RouteController().getRouter());
+app.use('/api', new RouteController(server).getRouter());
 
-app.listen(port, function() {
+server.listen(port, function() {
   console.log('Server has been started on /api @ port ' + port + '.');
 });

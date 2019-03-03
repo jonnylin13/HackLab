@@ -6,6 +6,7 @@ import { Lab } from '../../models/response';
 
 const localUrl: string = 'http://localhost:8080/api/';
 const externalUrl: string = 'https://hacklab.herokuapp.com/api/';
+const lol: string = 'http://localhost:8080/api/';
 
 @Injectable({
   providedIn: 'root'

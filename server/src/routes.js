@@ -9,10 +9,10 @@ const User = require('./models/user');
 const SocketServer = require('./socket');
 
 class RouteController {
-  constructor() {
+  constructor(server) {
     this.router = Router();
     this.labService = new LabService();
-    this.socketServer = new SocketServer(this.labService);
+    this.socketServer = new SocketServer(this.labService, server);
     this._registerRoutes();
   }
 

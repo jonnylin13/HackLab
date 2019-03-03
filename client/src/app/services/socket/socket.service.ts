@@ -8,7 +8,7 @@ import { ClientService } from '../../services/client/client.service';
 export class SocketService {
   private socket: SocketIOClient.Socket;
   constructor(private client: ClientService) {
-    this.socket = io('http://hacklab.herokuapp.com/');
+    this.socket = io('https://hacklab.herokuapp.com/');
     this.socket.on('handshake_ack', msg => this._onHandshakeAck(msg));
     this.socket.on('update', msg => this._onUpdate(msg));
     this.socket.on('disconnect', msg => {
