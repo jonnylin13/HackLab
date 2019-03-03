@@ -1,12 +1,11 @@
+# HackLab
 
-# Check out the [live demo](https://hacklab4humanity.github.io)!
+## Check out the [live demo](https://hacklab4humanity.github.io)!
 
 If the demo hangs when you submit a lab, it's because the free Heroku instance is being woken up! Please be patient.
 ## Inspiration
 
 Programming can be a difficult field to enter, but it's extremely rewarding as you continue to grow. Lowering the barrier of entry by reducing possible overhead frustration can help push early-learners to continue. Underprivileged schools also don't have IT to set up development environments for students, and so web-application based IDEs can offer a direct solution.
-
-# HackLab
 
 ## What it does
 
