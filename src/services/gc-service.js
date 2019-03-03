@@ -1,4 +1,4 @@
-export class GarbageCollectionService {
+class GarbageCollectionService {
   constructor(labService) {
     this.labService = labService;
   }

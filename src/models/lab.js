@@ -1,9 +1,11 @@
 const shortid = require('shortid');
 
 class Lab {
-  constructor(code, instructor) {
+  constructor(instructor, code, description, parsedCode) {
     this.id = shortid.generate();
     this.code = code;
+    this.parsedCode = parsedCode;
+    this.description = description;
     this.instructor = instructor;
     this.students = {};
     this.lastUsed = new Date();
@@ -20,6 +22,10 @@ class Lab {
   addStudent(user) {
     if (this.contains(user)) delete this.students[user.id];
     this.students[user.id] = user;
+  }
+
+  removeStudent(uid) {
+    if (uid in this.students) delete this.students[uid];
   }
 
   contains(user) {
