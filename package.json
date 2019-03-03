@@ -7,6 +7,7 @@
     "cors": "^2.8.5",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
+    "human-readable-ids": "^1.0.4",
     "jsonwebtoken": "^8.5.0",
     "shortid": "^2.2.14",
     "socket.io": "^2.2.0",
