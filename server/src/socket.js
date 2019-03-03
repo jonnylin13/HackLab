@@ -66,6 +66,10 @@ class SocketServer {
     );
   }
 
+  disconnect(lab) {
+    this._emit(lab.id, 'disconnect');
+  }
+
   getIo() {
     return this.io;
   }

@@ -4,8 +4,8 @@ function _eval() {
     let good = 0;
 
     setTimeout(() => {
-      for (var err in this.assertions) {
-        let condition = this.assertions[err];
+      for (var err in this) {
+        let condition = this[err];
         console.assert(condition, err);
         if (!condition) bad++;
         else good++;
@@ -49,30 +49,33 @@ export class Evaluator {
   evaluate(code: string) {
     console.clear();
     let timestamp = new Date();
-    setTimeout(() => {
-      // Todo: timeout?
-      let HackLab = eval(code);
-      let hacklab = new HackLab();
-      let hlProto = Object.getPrototypeOf(hacklab);
-      // Todo: validate solution()?
-      let data = hacklab.build();
-
-      let getResult = _eval.bind(data);
-      getResult()
-        .then(result => {
-          let runtime =
-            new Date().getMilliseconds() - timestamp.getMilliseconds();
-          console.log(
-            result.good +
-              ' out of ' +
-              (result.bad + result.good) +
-              ' ran successfully.'
-          );
-          console.log('Runtime: ' + runtime + ' ms.');
-        })
-        .catch(error => {
-          throw new Error(error);
-        });
+    return new Promise(res => {
+      setTimeout(() => {
+        // Todo: timeout?
+        let HackLab = eval(code);
+        let hacklab = new HackLab();
+        let hlProto = Object.getPrototypeOf(hacklab);
+        // Todo: validate solution()?
+        let data = hacklab.build();
+        let getResult = _eval.bind(data);
+        getResult()
+          .then(result => {
+            let runtime =
+              new Date().getMilliseconds() - timestamp.getMilliseconds();
+            console.log(
+              result.good +
+                ' out of ' +
+                (result.bad + result.good) +
+                ' ran successfully.'
+            );
+            console.log('Runtime: ' + runtime + ' ms.');
+            if (result.bad == 0) res(true);
+            else res(false);
+          })
+          .catch(error => {
+            throw new Error(error);
+          });
+      });
     });
   }
 

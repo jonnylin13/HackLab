@@ -11,6 +11,9 @@ export class SocketService {
     this.socket = io('http://localhost:3000/');
     this.socket.on('handshake_ack', msg => this._onHandshakeAck(msg));
     this.socket.on('update', msg => this._onUpdate(msg));
+    this.socket.on('disconnect', msg => {
+      this.socket.disconnect();
+    });
   }
 
   _sendMessage(type: string, msg: string) {

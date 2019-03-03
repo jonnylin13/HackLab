@@ -66,27 +66,6 @@ class RouteController {
         }
         return res.json({ code: 1, lab: lab });
       })
-      .delete(
-        '/labs/:id',
-        (req, res, next) => this._validateFields(req, res, next, ['token']),
-        (req, res) => {
-          if (!req.valid) return res.json({ code: -1 });
-          let id = req.params['id'];
-          let lab = this.labService.getLab(id);
-          if (!lab) return res.json({ code: -2 });
-
-          jwt.verify(req.body.token, process.env.SECRET, (err, decoded) => {
-            if (err) return res.json({ code: 0 });
-            let id = decoded.userId;
-            if (lab.instructor === id) {
-              this.labService.removeLab(lab.id);
-            } else {
-              lab.removeStudent(id);
-            }
-            return res.json({ code: 1 });
-          });
-        }
-      )
       .post(
         '/labs/:id',
         (req, res, next) => this._validateFields(req, res, next, ['nickname']),
@@ -109,6 +88,48 @@ class RouteController {
           return res.json(payload);
         }
       );
+    this.router.post(
+      '/disconnect/:id',
+      (req, res, next) => this._validateFields(req, res, next, ['token']),
+      (req, res) => {
+        if (!req.valid) return res.json({ code: -1 });
+        let id = req.params['id'];
+        let lab = this.labService.getLab(id);
+        if (!lab) return res.json({ code: -2 });
+
+        jwt.verify(req.body.token, process.env.SECRET, (err, decoded) => {
+          if (err) return res.json({ code: 0 });
+          let id = decoded.userId;
+          if (lab.instructor === id) {
+            this.socketServer.disconnect(lab);
+            this.labService.removeLab(lab.id);
+          } else {
+            lab.removeStudent(id);
+            this.socketServer.update(lab);
+          }
+          return res.json({ code: 1 });
+        });
+      }
+    );
+    this.router.post(
+      '/submit/:id',
+      (req, res, next) => this._validateFields(req, res, next, ['token']),
+      (req, res) => {
+        if (!req.valid) return res.json({ code: -1 });
+        let id = req.params['id'];
+        let lab = this.labService.getLab(id);
+        if (!lab) return res.json({ code: -2 });
+
+        jwt.verify(req.body.token, process.env.SECRET, (err, decoded) => {
+          if (err) return res.json({ code: -3 });
+          let id = decoded.userId;
+          let student = lab.getStudent(id);
+          student.setCompleted(true);
+          this.socketServer.update(lab);
+          return res.json({ code: 1 });
+        });
+      }
+    );
   }
 
   getRouter() {

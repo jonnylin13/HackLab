@@ -21,7 +21,6 @@ export class JoinLabComponent implements OnInit {
 
   join() {
     this.client.joinLab(this.labId, this.nickname).subscribe(res => {
-      console.log(res);
       if (res['code'] !== 1) {
         console.log('Rip :( Code: ' + res['code']);
         return;

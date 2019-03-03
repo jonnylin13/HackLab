@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ClientService } from '../../services/client/client.service';
 import { NavigationService } from '../../services/navigation/navigation.service';
+import { Evaluator } from '../../utils/evaluator.util';
 
 @Component({
   selector: 'app-student',
@@ -9,7 +10,8 @@ import { NavigationService } from '../../services/navigation/navigation.service'
   styleUrls: ['./student.component.scss']
 })
 export class StudentComponent implements OnInit {
-  code: string = this.client.getLab().code;
+  code: string = this.client.getLab() ? this.client.getLab().code : '';
+  private evaluator = new Evaluator();
   constructor(private client: ClientService, private nav: NavigationService) {}
 
   ngOnInit() {
@@ -17,8 +19,9 @@ export class StudentComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.client.getLab());
-    console.log('implement submit!');
+    this.evaluator.evaluate(this.code).then(res => {
+      if (res) this.client.submit();
+    });
   }
 
   restart() {
@@ -26,7 +29,9 @@ export class StudentComponent implements OnInit {
   }
 
   disconnect() {
-    console.log('implement disconnect!');
+    this.client.disconnect().subscribe(res => {
+      this.nav.home();
+    });
   }
 
   getClient() {

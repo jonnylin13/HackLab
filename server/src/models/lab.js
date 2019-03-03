@@ -31,6 +31,10 @@ class Lab {
   contains(user) {
     return user.id in this.students;
   }
+
+  getStudent(uid) {
+    return this.students[uid];
+  }
 }
 
 module.exports = Lab;

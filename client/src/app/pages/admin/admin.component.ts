@@ -40,6 +40,18 @@ export class AdminComponent implements OnInit {
   }
 
   getNumStudentsCompleted() {
-    return 0;
+    let lab = this.client.getLab();
+    if (!lab) {
+      return 0;
+    }
+    let completed = 0;
+    for (let k in lab['students'])
+      if (lab['students'][k]['completed']) completed++;
+    return completed;
+  }
+
+  disconnect() {
+    this.client.disconnect();
+    this.nav.home();
   }
 }

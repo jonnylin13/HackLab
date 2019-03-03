@@ -6,8 +6,15 @@ class User {
     this.lid = lid;
     this.nickname = nickname;
     this.runtime = 0.0;
-    this.success = { bad: 0, good: 0 };
     this.completed = false;
+  }
+
+  setCompleted(completed) {
+    this.completed = completed;
+  }
+
+  setRuntime(runtime) {
+    this.runtime = runtime;
   }
 }
 

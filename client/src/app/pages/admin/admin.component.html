@@ -2,8 +2,13 @@
   <app-logo></app-logo>
   <h2>Join code: {{ this.getShortId() }}</h2>
   <h1>
-    {{ this.getNumStudentsCompleted() }} / {{ this.getNumStudents() }} students
-    have completed your lab.
+    {{ this.getNumStudents() }} student<ng-container
+      *ngIf="this.getNumStudents() > 1 || this.getNumStudents() === 0"
+      >s</ng-container
+    >
+    connected.
   </h1>
-  <button class="btn btn-danger">Stop Session</button>
+  <button class="btn btn-danger" (click)="this.disconnect()">
+    Stop Session
+  </button>
 </app-layout>

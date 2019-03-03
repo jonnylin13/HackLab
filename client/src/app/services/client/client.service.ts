@@ -38,6 +38,25 @@ export class ClientService {
     };
     return this.http.post(this.url + 'labs/' + labId, payload);
   }
+
+  disconnect() {
+    let payload = {
+      token: this.token
+    };
+    let labId = this.labId;
+    this.labId = '';
+    this.token = '';
+    this.lab = undefined;
+    return this.http.post(this.url + 'disconnect/' + labId, payload);
+  }
+
+  submit() {
+    let payload = {
+      token: this.token
+    };
+    return this.http.post(this.url + 'submit/' + this.labId, payload);
+  }
+
   setLabId(labId: string) {
     this.labId = labId;
   }

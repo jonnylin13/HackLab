@@ -48,7 +48,6 @@ export class CreateLabComponent implements OnInit {
     this.client.createLab(fmtCode, this.nickname).subscribe(lab => {
       this.client.setLabId(lab.id);
       this.client.setToken(lab.token);
-      console.log(lab.id);
       this.nav.admin();
     });
   }
