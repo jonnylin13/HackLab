@@ -1,0 +1,17 @@
+<app-navbar> </app-navbar>
+<app-layout class="full-container" centered="false">
+  <input
+    type="text"
+    class="text-field"
+    placeholder="Nickname"
+    [(ngModel)]="this.nickname"
+  />
+  <input
+    type="text"
+    class="text-field"
+    placeholder="Lab Code"
+    [(ngModel)]="this.labId"
+  />
+  <button class="btn btn-primary" (click)="this.getNav().home()">Home</button>
+  <button class="btn btn-info" (click)="this.join()">Join</button>
+</app-layout>

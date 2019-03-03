@@ -1,5 +1,6 @@
 const Lab = require('../models/lab');
 const GarbageCollectionService = require('./gc-service');
+const EvalService = require('./eval-service');
 
 class LabService {
   constructor() {
@@ -7,16 +8,20 @@ class LabService {
     this.gc = new GarbageCollectionService();
   }
 
-  getLabs() {
-    return this.labs;
+  getLab(id) {
+    return this.labs[id];
   }
 
   getGC() {
     return this.gc;
   }
 
-  addLab(code) {
-    let lab = new Lab(code);
+  addLab(instructor, code) {
+    let HackLab = EvalService.eval(code);
+    let hacklab = new HackLab();
+    let description = hacklab.description();
+    let lab = new Lab(instructor, code, description);
+    instructor.lid = lab.id;
     this.labs[lab.id] = lab;
     return this.labs[lab.id];
   }

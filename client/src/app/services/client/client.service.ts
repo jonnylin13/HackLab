@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Lab } from '../../models/lab';
+import { Lab } from '../../models/response';
 
 const localUrl: string = 'http://localhost:8080/api/';
 const externalUrl: string = 'https://hacklab.herokuapp.com/api/';
@@ -12,7 +12,9 @@ const externalUrl: string = 'https://hacklab.herokuapp.com/api/';
 })
 export class ClientService {
   url: string;
-  lobbyId: string = '';
+  labId: string = '';
+  token: string = '';
+  lab: any;
 
   constructor(private http: HttpClient) {
     this.url = localUrl;
@@ -30,11 +32,60 @@ export class ClientService {
     return this.http.post<Lab>(this.url + 'labs', payload);
   }
 
-  setLobbyId(lobbyId: string) {
-    this.lobbyId = lobbyId;
+  joinLab(labId: string, nickname: string) {
+    let payload = {
+      nickname: nickname
+    };
+    return this.http.post(this.url + 'labs/' + labId, payload);
+  }
+  setLabId(labId: string) {
+    this.labId = labId;
   }
 
-  getLobbyId() {
-    return this.lobbyId;
+  getLabId() {
+    return this.labId;
+  }
+
+  setToken(token: string) {
+    this.token = token;
+  }
+
+  getToken() {
+    return this.token;
+  }
+
+  setLab(obj) {
+    this.lab = obj;
+  }
+
+  getLab() {
+    return this.lab;
+  }
+
+  toggleFullscreen() {
+    let elem = document.documentElement;
+    let isFullscreen =
+      document['fullscreenElement'] ||
+      document['webkitFullscreenElement'] ||
+      document['mozFullscreenElement'] ||
+      document['msFullscreenElement'];
+
+    let requestFullscreen =
+      elem.requestFullscreen ||
+      elem['msRequestFullscreen'] ||
+      elem['mozRequestFullscreen'] ||
+      elem['webkitRequestFullscreen'];
+
+    let exitFullscreen =
+      document.exitFullscreen ||
+      document['webkitExitFullscreen'] ||
+      document['mozExitFullscreen'] ||
+      document['webkitExitFullscreen'];
+
+    if (isFullscreen) {
+      if (exitFullscreen) exitFullscreen.call(document);
+    } else {
+      if (requestFullscreen) requestFullscreen.call(elem);
+    }
   }
 }

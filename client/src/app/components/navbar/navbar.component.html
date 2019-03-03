@@ -2,6 +2,11 @@
   <ul>
     <li (click)="this.getNav().home()"><app-logo color="white"></app-logo></li>
     <li (click)="this.getNav().about()">About Us</li>
-    <li (click)="this.getNav().home()">Join Lab</li>
+    <li
+      (click)="this.getNav().joinLab()"
+      *ngIf="this.getClient().getLabId() === ''"
+    >
+      Join Lab
+    </li>
   </ul>
 </div>

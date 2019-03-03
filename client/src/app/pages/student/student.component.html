@@ -1,0 +1,11 @@
+<app-layout class="full-container" centered="false">
+  <app-editor [(code)]="this.code"> </app-editor>
+  <button class="btn btn-danger" (click)="this.disconnect()">Disconnect</button>
+  <button class="btn" (click)="this.restart()">Restart</button>
+  <button class="btn btn-info" (click)="this.submit()">
+    Post Submission
+  </button>
+  <button class="btn btn-dark" (click)="this.getClient().toggleFullscreen()">
+    Fullscreen
+  </button>
+</app-layout>

@@ -1,0 +1,9 @@
+<app-layout class="full-container" centered="false">
+  <app-logo></app-logo>
+  <h2>Join code: {{ this.getShortId() }}</h2>
+  <h1>
+    {{ this.getNumStudentsCompleted() }} / {{ this.getNumStudents() }} students
+    have completed your lab.
+  </h1>
+  <button class="btn btn-danger">Stop Session</button>
+</app-layout>

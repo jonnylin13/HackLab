@@ -12,14 +12,26 @@ export class NavigationService {
   }
 
   createLab() {
-    this.goto('/create-lab');
+    this.goto('create-lab');
   }
 
   home() {
-    this.goto('/');
+    this.goto('');
   }
 
   about() {
-    this.goto('/about-us');
+    this.goto('about-us');
+  }
+
+  admin() {
+    this.goto('admin');
+  }
+
+  joinLab() {
+    this.goto('join-lab');
+  }
+
+  student() {
+    this.goto('student');
   }
 }

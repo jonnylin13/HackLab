@@ -15,6 +15,9 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { JoinLabComponent } from './pages/join-lab/join-lab.component';
+import { StudentComponent } from './pages/student/student.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { ModalComponent } from './components/modal/modal.component';
     LayoutComponent,
     LogoComponent,
     AboutComponent,
-    ModalComponent
+    ModalComponent,
+    AdminComponent,
+    JoinLabComponent,
+    StudentComponent
   ],
   imports: [
     BrowserModule,

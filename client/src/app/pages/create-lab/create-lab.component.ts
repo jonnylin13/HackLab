@@ -30,35 +30,8 @@ export class CreateLabComponent implements OnInit {
     this.code = this.evaluator.getJS();
   }
 
-  toggleFullscreen() {
-    let elem = document.documentElement;
-    let isFullscreen =
-      document['fullscreenElement'] ||
-      document['webkitFullscreenElement'] ||
-      document['mozFullscreenElement'] ||
-      document['msFullscreenElement'];
-
-    let requestFullscreen =
-      elem.requestFullscreen ||
-      elem['msRequestFullscreen'] ||
-      elem['mozRequestFullscreen'] ||
-      elem['webkitRequestFullscreen'];
-
-    let exitFullscreen =
-      document.exitFullscreen ||
-      document['webkitExitFullscreen'] ||
-      document['mozExitFullscreen'] ||
-      document['webkitExitFullscreen'];
-
-    if (isFullscreen) {
-      if (exitFullscreen) exitFullscreen.call(document);
-    } else {
-      if (requestFullscreen) requestFullscreen.call(elem);
-    }
-  }
-
   createLab() {
-    if (this.client.getLobbyId() !== '') return;
+    if (this.client.getLabId() !== '') return;
     this.createLabModal = true;
   }
 
@@ -73,8 +46,14 @@ export class CreateLabComponent implements OnInit {
     }
     let fmtCode = this.evaluator.format(this.code);
     this.client.createLab(fmtCode, this.nickname).subscribe(lab => {
-      this.client.setLobbyId(lab.id);
+      this.client.setLabId(lab.id);
+      this.client.setToken(lab.token);
       console.log(lab.id);
+      this.nav.admin();
     });
+  }
+
+  getClient() {
+    return this.client;
   }
 }
