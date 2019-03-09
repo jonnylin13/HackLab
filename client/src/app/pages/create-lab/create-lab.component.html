@@ -11,18 +11,27 @@
   </button>
 </app-layout>
 <app-modal [visible]="this.createLabModal">
-  <div style="background-color: lightgray;">
+  <div *ngIf="!this.loading" style="background-color: lightgray;">
     <input
       [(ngModel)]="this.nickname"
       type="text"
       class="text-field"
       placeholder="Enter a nickname"
+      [disabled]="this.loading"
     />
     <button class="btn" (click)="this.cancelCreateLab()">
       Cancel
     </button>
-    <button class="btn btn-info" (click)="this.confirmCreateLab()">
+    <button
+      [disabled]="this.loading"
+      class="btn btn-info"
+      (click)="this.confirmCreateLab()"
+    >
       Confirm
     </button>
+  </div>
+  <div class="lds-ripple" *ngIf="this.loading">
+    <div></div>
+    <div></div>
   </div>
 </app-modal>

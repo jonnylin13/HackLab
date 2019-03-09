@@ -14,6 +14,8 @@ export class CreateLabComponent implements OnInit {
   code: string;
   nickname: string = '';
   createLabModal: boolean = false;
+  loading: boolean = false;
+
   constructor(private nav: NavigationService, private client: ClientService) {
     this.evaluator = new Evaluator();
   }
@@ -44,11 +46,13 @@ export class CreateLabComponent implements OnInit {
       this.createLabModal = false;
       return;
     }
+    this.loading = true;
     let fmtCode = this.evaluator.format(this.code);
     this.client.createLab(fmtCode, this.nickname).subscribe(lab => {
       this.client.setLabId(lab.id);
       this.client.setToken(lab.token);
       this.nav.admin();
+      this.loading = false;
     });
   }
 
