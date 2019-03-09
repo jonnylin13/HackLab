@@ -11,7 +11,6 @@ class SocketServer {
     this.labService = labService;
     this.io = io(server, SERVER_OPTIONS);
     this.io.on('connection', socket => this._onConnection(socket));
-    this.sockets = {};
   }
 
   _onConnection(socket) {
